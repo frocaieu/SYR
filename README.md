@@ -27,3 +27,17 @@ you see 3 different buttons:
     
     3. this third button also opens a new page where you see all your expenses 
     organized depending on the type of expense.
+
+ARCHITECTURE
+
+Our app uses a simple search algorithm to organize expenses. This algorithm is designed to recognize common types of expenses and categorize them accordingly.using a diverse set of sample data, which allows it to accurately categorize a wide range of expenses and allows the app to be highly personalized. 
+
+FUTURE IMPROVEMENTS
+
+Enhanced Search Capabilities: We aim to introduce more sophisticated search functionalities to assist you in locating specific receipts or expenses with ease.
+
+Integration with Financial Platforms: We are considering the integration of our app with widely-used financial tools and services. This integration would enable you to import your expenses and transactions directly into the app, providing a seamless financial management experience.
+
+Refined Expense Monitoring: We are developing new features that will offer you more in-depth insights into your spending patterns.
+
+
