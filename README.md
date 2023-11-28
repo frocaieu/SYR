@@ -9,42 +9,14 @@ Our app, SYR aims to make your life easier by keeping track and organizing your 
 - _Expense Tracking_: The app keeps a running total of all your expenses, allowing you to see at a glance how much you're spending.
 
 
-
-**FILES**
-Files in Repository:
-
-_main.py_: Contains the main code for the app.
-_scanner.py_: Handles the receipt scanning functionality.
-_categorization.py_: Manages the automatic categorization of expenses.
-_tracker.py_: Implements the expense tracking features.
-_search.py_: Future implementation for enhanced search capabilities.
-_integration.py_: Placeholder for integration with financial platforms.
-_monitoring.py_: Placeholder for refined expense monitoring features.
-_README.md_: Detailed documentation about the app, including instructions for installation and usage.
-
-
-
-**PREREQUISITES AND ENVIRONMENT**
-_Libraries Used_:
-- **OpenCV**: The app utilizes OpenCV for image processing and receipt scanning.
-- **NumPy**: NumPy is used for efficient numerical operations in the app.
-
-_Python Version_:
-The app is developed and tested with Python 3.8 or higher. Make sure you have Python installed on your system.
-To check your Python version, run the following command in your terminal:
-
-'''bash
-python --version
-
-
-
 **LOG IN AND HOME PAGE**
-<img width="274" alt="Captura de pantalla 2023-11-25 192209" src="https://github.com/frocaieu/SYR/assets/151723296/1eb7c065-0e7a-40f4-b8d0-79619cbf9595">
+
+
+<img width="316" alt="image" src="https://github.com/frocaieu/SYR/assets/151723296/b08df413-38f6-42c9-ba38-fcf1938d1712">
 
 A screen to see your expenses, to add new receipts and to see all the expenses organize into different categories:
 
 <img width="419" alt="Captura de pantalla 2023-11-25 193319" src="https://github.com/frocaieu/SYR/assets/151723296/718a0610-5d7e-4652-8330-6c8f71e46298">
-
 
 
 **USE OF THE APP**
@@ -59,16 +31,34 @@ you see 3 different buttons:
     3. this third button also opens a new page where you see all your expenses 
     organized depending on the type of expense.
 
+**ENVIRONMENT**
+_Libraries Used_:
+- **PySimpleGUI**:is a Python library that simplifies the process of creating Graphical User Interfaces (GUI).
+- **datetime**: is a Python module for manipulating dates and times.
 
+_Python Version_:
+The app is developed and tested with Python 3.8 or higher
+Run the following command in your terminal: pip install PySimpleGUI
 
 **ARCHITECTURE**
-Our app uses a simple search algorithm to organize expenses. This algorithm is designed to recognize 
-common types of expenses and categorize them accordingly.using a diverse set of sample data, 
-which allows it to accurately categorize a wide range of expenses and allows the app to be highly personalized. 
 
+Simple Search: When you filter receipts by month in the ‘View Expenses By Month’ feature, it’s like doing a simple search. The code goes through each receipt in the list and checks if its date matches the selected month, which allows it to accurately categorize a wide range of expenses and allows the app to be highly personalized. 
+
+Lists: The receipts in the User class is a list that holds all the receipts. Lists in Python can grow and shrink as needed.
+
+Objects: The Receipt and User classes are used to create objects. Each Receipt object is a receipt with details like name, value, date, and
+category. Each User object is a user with a username and a list of receipts.
+
+Insertion: The add_receipt method in the User class is used to add a new receipt to the user’s list. This is an example of adding an item
+to a list.
+
+Traversal: The code goes through the list of receipts in several places. For example, when the ‘View Last Receipt’ button is clicked, it
+gets the last receipt from the list. When the ‘View All Expenses’ button is clicked, it goes through all the receipts to display them in a
+table.
 
 
 **FUTURE IMPROVEMENTS**
+
 Enhanced Search Capabilities: We aim to introduce more sophisticated search functionalities
 to assist you in locating specific receipts or expenses with ease.
 
@@ -77,4 +67,15 @@ This integration would enable you to import your expenses and transactions direc
 
 Refined Expense Monitoring: We are developing new features that will offer you more in-depth insights into your spending patterns.
 
+
+**CREDITS**
+
+The idea, Strategy and creations of the app has been done by Group 8 during the Algorithm and Data Structure curse:
+
+María Fernández Gomez-Monche
+Diana De Lorenzo
+María Consolación Fernández Cañavate
+Francisco Javier Roca
+Joshua Harpoof
+María Martínez González
 
