@@ -28,7 +28,6 @@ _README.md_: Detailed documentation about the app, including instructions for in
 _Libraries Used_:
 - **OpenCV**: The app utilizes OpenCV for image processing and receipt scanning.
 - **NumPy**: NumPy is used for efficient numerical operations in the app.
-- [Add any other libraries your app depends on]
 
 _Python Version_:
 The app is developed and tested with Python 3.8 or higher. Make sure you have Python installed on your system.
