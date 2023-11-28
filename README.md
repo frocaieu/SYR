@@ -1,16 +1,17 @@
 **DESCRIPTION OF THE APP**
+
 Our app, SYR aims to make your life easier by keeping track and organizing your expenses, this is possible because SYR scan receipts and automatically it organizes them into different folders based on the type of expense.
 
 
 
 **FEATURES**
+
 - _Receipt Scanning_: The app allows you to scan receipts using your camera. The scanned receipts are then stored in the app for future reference.
 - _Expense Categorization_: The app automatically categorizes your expenses based on the type of purchase. This makes it easy to track specific types of expenses.
 - _Expense Tracking_: The app keeps a running total of all your expenses, allowing you to see at a glance how much you're spending.
 
 
 **LOG IN AND HOME PAGE**
-
 
 <img width="316" alt="image" src="https://github.com/frocaieu/SYR/assets/151723296/b08df413-38f6-42c9-ba38-fcf1938d1712">
 
@@ -19,7 +20,10 @@ A screen to see your expenses, to add new receipts and to see all the expenses o
 <img width="419" alt="Captura de pantalla 2023-11-25 193319" src="https://github.com/frocaieu/SYR/assets/151723296/718a0610-5d7e-4652-8330-6c8f71e46298">
 
 
+
+
 **USE OF THE APP**
+
 First you log in and you enter into you home page.
 you see 3 different buttons:
 
@@ -31,8 +35,41 @@ you see 3 different buttons:
     3. this third button also opens a new page where you see all your expenses 
     organized depending on the type of expense.
 
+**INSTALLATION OF SYR!**
+
+STEP BY STEP TO YOUR FUTURE WALLET!
+
+1. Download Python and pycharm (link pycharm) (https://www.python.org/downloads/) into your desktop. 
+Once you have done this you are ready download the code!
+
+2. Download the code from the “CODING.py” folder
+
+<img width="289" alt="Captura de pantalla 2023-11-28 a las 14 05 54" src="https://github.com/frocaieu/SYR/assets/151958716/de48f7a5-8c54-4060-81ca-95f694cf00f1">
+ 
+3. Save “CODING.py” in a folder that you choose to be the directory of your project in Pycharm.
+   
+4. Once you have saved it, open this file in Pycharm by clicking on the directory, then clicking “New” and finally clicking “File” and type in the name of the file, in this case: “CODING.py”.
+   
+5. Go to the Terminal which is in the bottom left corner of your screen:
+   
+![image](https://github.com/frocaieu/SYR/assets/151958716/735dd441-db2c-4b63-8058-5d997aaf4219)
+
+6. Type in: pip install PySimpleGUI
+   
+7. Now, run the code by clicking:
+
+ <img width="36" alt="Captura de pantalla 2023-11-28 a las 14 08 06" src="https://github.com/frocaieu/SYR/assets/151958716/dac11c66-85dc-4128-8ea2-74e44cb9d1d1">
+
+8. Follow what the system tells you to do; log in, write the name of receipts, its value, etc.
+   
+9. Dont forget to tell us your feedback and what you think!
+
+    
+
 **ENVIRONMENT**
+
 _Libraries Used_:
+
 - **PySimpleGUI**:is a Python library that simplifies the process of creating Graphical User Interfaces (GUI).
 - **datetime**: is a Python module for manipulating dates and times.
 
