@@ -1,50 +1,124 @@
-class Syr:
-    def user_test(self):
-        try:
-            # Mapping of months to stores and expenses
-            purchases_by_month = {
-                "January": {"Zara": 50, "Mercadona": 80, "Asos": 30, "Pharmacy": 12, "Netflix": 11},
-                "February": {"IE university": 20, "El Corte Ingles": 200, "Carrefour": 47, "Netflix": 11},
-                "March": {"Mercadona": 150, "Decathlon": 90, "Pharmacy": 12, "Netflix": 11},
-                "April": {"Zara": 52, "Amazon": 90, "Lidl": 52, "Lateral": 15, "Netflix": 11},
-                "May": {"Mercadona": 80, "IE university": 28, "Netflix": 11},
-                "June": {"trajesdebaño.com": 45, "Vans": 58, "Rayban": 110, "La Tagliatelle": 22, "Netflix": 11},
-                "July": {"Iberia": 654, "Mercadona": 80, "Apple": 1100, "Netflix": 11},
-                "August": {"Liberty Club": 30, "Lateral": 87, "Carrefour": 47, "Netflix": 11},
-                "September": {"Mercadona": 80, "Zalando": 23, "Pharmacy": 12, "Netflix": 11},
-                "October": {"Zara": 52, "GoSushi": 18, "NailsLady": 25, "Netflix": 11},
-                "November": {"Mercadona": 80, "Aristocrazy": 53, "Netflix": 11},
-                "December": {"Amazon": 47, "Netflix": 11, "Pharmacy": 12, "Netflix": 11}
-            }
+import PySimpleGUI as sg
+import datetime
 
-            # User input for the desired month
-            desired_month = input("Question 1: Which month's expenses do you want to see? Enter the month (e.g., November): ").capitalize()
+sg.theme('DarkAmber')
 
-            # Check if the desired month is in the purchases dictionary
-            if desired_month in purchases_by_month:
-                expenses = purchases_by_month[desired_month]
-                print(f"Monthly expenses in {desired_month}:")
-                for store, amount in expenses.items():
-                    print(f"In {store} he spent around {amount}€")
+class Receipt:
+    def __init__(self, name, value, date, category):
+        self.name = name
+        self.value = value
+        self.date = date
+        self.category = category
 
-                # Ask if the user wants to see the annual costs
-                show_annual_costs = input("Question 2: Do you want to see the annual costs for each shop? (yes/no): ").lower()
-                if show_annual_costs == "yes":
-                    # Calculate annual expenses for each shop
-                    annual_costs = {store: sum(costs.get(store, 0) for costs in purchases_by_month.values()) for store in set(store for costs in purchases_by_month.values() for store in costs)}
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.receipts = []
 
-                    # Ask which shop the user wants to see in the annual expenses
-                    shop_to_see = input("Question 3: Which shop would you like to see in your annual expense? Enter the shop name: ")
-                    if shop_to_see in annual_costs:
-                        print(f"Annual expense for {shop_to_see}: {annual_costs[shop_to_see]}€")
-                    else:
-                        print(f"No data found for {shop_to_see} in annual expenses.")
+    def add_receipt(self, receipt):
+        self.receipts.append(receipt)
+
+def main():
+    layout_login = [
+        [sg.Text('R-SCANN', font=('Comfortaa', 40), justification='center')],
+        [sg.Text('Enter your username', font=('Comfortaa', 20))],
+        [sg.Input(key='-USERNAME-', font=('Comfortaa', 20))],
+        [sg.Text('Enter your password', font=('Comfortaa', 20))],
+        [sg.Input(key='-PASSWORD-', password_char='*', font=('Comfortaa', 20))],
+        [sg.Button('Login', font=('Comfortaa', 20))]
+    ]
+
+    window_login = sg.Window('Login', layout_login)
+
+    user = None
+    default_password = 'password'
+
+    while True:
+        event, values = window_login.read()
+
+        if event == sg.WINDOW_CLOSED:
+            break
+
+        if event == 'Login':
+            username = values['-USERNAME-']
+            password = values['-PASSWORD-']
+
+            # Replace this check with your actual authentication logic
+            if username and password == default_password:
+                user = User(username, password)
+                window_login.close()
+                break
             else:
-                print(f"No expenses found for {desired_month}")
+                sg.popup_error('Invalid username or password. Try again.')
 
-        except Exception as e:
-            print(f"Error during user test: {e}")
+    categories = ['Shopping', 'Groceries', 'Insurance', 'Rent', 'Restaurants', 'Transports', 'Leisure', 'Others']
 
-# Example usage:
-syr_app = Syr()
-syr_app.user_test()
+    layout_receipt = [
+        [sg.Text('WELCOME!', font=('Comfortaa', 30), justification='center')],
+        [sg.Text('Receipt Name', font=('Comfortaa', 20)), sg.Input(key='-RECEIPT_NAME-', font=('Comfortaa', 20))],
+        [sg.Text('Receipt Value', font=('Comfortaa', 20)), sg.Input(key='-RECEIPT_VALUE-', font=('Comfortaa', 20))],
+        [sg.Text('Receipt Date', font=('Comfortaa', 20)), sg.Input(key='-RECEIPT_DATE-', tooltip='YYYY-MM-DD', font=('Comfortaa', 20)), sg.CalendarButton('Choose Date', target='-RECEIPT_DATE-', format='%Y-%m-%d', font=('Comfortaa', 20))],
+        [sg.Text('Receipt Category', font=('Comfortaa', 20)), sg.Combo(categories, key='-RECEIPT_CATEGORY-', default_value='Shopping', font=('Comfortaa', 20))],
+        [sg.Button('Add Receipt', font=('Comfortaa', 20)), sg.Button('View Last Receipt', font=('Comfortaa', 20)), sg.Button('View All Expenses', font=('Comfortaa', 20))]
+    ]
+
+    window_receipt = sg.Window('Add New Receipt', layout_receipt)
+
+    layout_expenses = [
+        [sg.Table(values=[['', '', '', '']], headings=['Category of Expense', 'Value in €', 'Name', 'Date'], auto_size_columns=False,
+                  col_widths=[20, 10, 20, 12], justification='right', key='-EXPENSES_TABLE-', font=('Comfortaa', 15))],
+        [sg.Text('Total Expenses by Category:', font=('Comfortaa', 20))],
+        [sg.Multiline(size=(30, 8), key='-TOTAL_EXPENSES-', font=('Comfortaa', 15))],
+        [sg.Button('Close', font=('Comfortaa', 20))]
+    ]
+
+    window_expenses = sg.Window('All Expenses', layout_expenses, finalize=True)
+    expenses_table = window_expenses['-EXPENSES_TABLE-']
+    total_expenses_text = window_expenses['-TOTAL_EXPENSES-']
+
+    while True:
+        event, values = window_receipt.read()
+
+        if event == sg.WINDOW_CLOSED:
+            break
+
+        if event == 'Add Receipt':
+            name = values['-RECEIPT_NAME-']
+            value = values['-RECEIPT_VALUE-']
+            date = values['-RECEIPT_DATE-']
+            category = values['-RECEIPT_CATEGORY-']
+
+            if name and value and date and category:
+                receipt = Receipt(name, value, date, category)
+                user.add_receipt(receipt)
+                sg.popup('Receipt added successfully!')
+
+        if event == 'View Last Receipt':
+            if user.receipts:
+                last_receipt = user.receipts[-1]
+                sg.popup(f'Last Receipt:\nName: {last_receipt.name}\nValue: {last_receipt.value}\nDate: {last_receipt.date}\nCategory: {last_receipt.category}')
+            else:
+                sg.popup('No receipts available.')
+
+        if event == 'View All Expenses':
+            if user.receipts:
+                data = [[r.category, f"{r.value}€", r.name, r.date] for r in user.receipts]
+                expenses_table.update(values=data)
+
+                # Calculate total expenses by category
+                total_expenses_by_category = {}
+                for receipt in user.receipts:
+                    if receipt.category in total_expenses_by_category:
+                        total_expenses_by_category[receipt.category] += float(receipt.value)
+                    else:
+                        total_expenses_by_category[receipt.category] = float(receipt.value)
+
+                # Display total expenses by category
+                total_expenses_text.update(value='\n'.join([f'{category}: {total}€' for category, total in total_expenses_by_category.items()]))
+
+    window_receipt.close()
+    window_expenses.close()
+
+if __name__ == '__main__':
+    main()
