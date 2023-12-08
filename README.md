@@ -35,6 +35,8 @@ you see 3 different buttons:
     3. this third button also opens a new page where you see all your expenses 
     organized depending on the type of expense.
 
+    
+
 **INSTALLATION OF SYR!**
 
 STEP BY STEP TO YOUR FUTURE WALLET!
@@ -77,6 +79,8 @@ _Python Version_:
 The app is developed and tested with Python 3.8 or higher
 Run the following command in your terminal: pip install PySimpleGUI
 
+
+
 **ARCHITECTURE**
 
 Simple Search: When you filter receipts by month in the ‘View Expenses By Month’ feature, it’s like doing a simple search. The code goes through each receipt in the list and checks if its date matches the selected month, which allows it to accurately categorize a wide range of expenses and allows the app to be highly personalized. 
@@ -94,6 +98,7 @@ gets the last receipt from the list. When the ‘View All Expenses’ button is 
 table.
 
 
+
 **FUTURE IMPROVEMENTS**
 
 Enhanced Search Capabilities: We aim to introduce more sophisticated search functionalities
@@ -103,6 +108,7 @@ Integration with Financial Platforms: We are considering the integration of our 
 This integration would enable you to import your expenses and transactions directly into the app, providing a seamless financial management experience.
 
 Refined Expense Monitoring: We are developing new features that will offer you more in-depth insights into your spending patterns.
+
 
 
 **CREDITS**
