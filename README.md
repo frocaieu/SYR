@@ -63,8 +63,10 @@ Once you have done this you are ready download the code!
  <img width="36" alt="Captura de pantalla 2023-11-28 a las 14 08 06" src="https://github.com/frocaieu/SYR/assets/151958716/dac11c66-85dc-4128-8ea2-74e44cb9d1d1">
 
 8. Follow what the system tells you to do; log in, write the name of receipts, its value, etc.
-   
-9. Dont forget to tell us your feedback and what you think!
+
+9. The password once entered the username chosen is: password
+    
+10. Dont forget to tell us your feedback and what you think!
 
     
 
